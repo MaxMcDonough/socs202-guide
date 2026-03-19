@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOCS 202 - Ecological Perspectives - Course Guide</title>
+<style>
+  :root {
+    --green: #4a7c59;
+    --lime: #8fb339;
+    --dark: #1a1a2e;
+    --cream: #f5f0e8;
+    --orange: #e07b39;
+    --red: #c0392b;
+    --blue: #2980b9;
+    --gray: #7f8c8d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: var(--cream); color: #2c2c2c; line-height: 1.7; }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+  header { background: var(--dark); color: white; padding: 40px 20px; text-align: center; }
+  header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 1px; }
+  header p { font-size: 1.1em; opacity: 0.8; }
+  .subtitle { color: var(--lime); font-weight: bold; }
+
+  .status-bar { background: var(--green); color: white; padding: 15px 20px; text-align: center; font-size: 1.1em; }
+
+  h2 { color: var(--dark); font-size: 1.6em; margin: 35px 0 15px; border-bottom: 3px solid var(--green); padding-bottom: 8px; }
+  h3 { color: var(--green); font-size: 1.25em; margin: 20px 0 10px; }
+  h4 { color: var(--orange); margin: 15px 0 8px; }
+
+  p { margin-bottom: 12px; }
+
+  .week-card {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--green);
+  }
+  .week-card.current { border-left-color: var(--orange); background: #fff8f0; }
+  .week-card.future { border-left-color: var(--gray); opacity: 0.85; }
+  .week-card.break { border-left-color: var(--blue); background: #f0f7ff; }
+
+  .week-num { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; color: var(--gray); margin-bottom: 5px; }
+  .week-title { font-size: 1.3em; color: var(--dark); margin-bottom: 10px; }
+  .week-card.current .week-num { color: var(--orange); }
+
+  .key-ideas { background: #f0f5e9; padding: 15px; border-radius: 8px; margin: 12px 0; }
+  .key-ideas strong { color: var(--green); }
+
+  .quote { border-left: 3px solid var(--orange); padding: 10px 15px; margin: 12px 0; font-style: italic; background: #fdf6f0; border-radius: 0 8px 8px 0; }
+  .quote .author { font-style: normal; font-weight: bold; display: block; margin-top: 5px; font-size: 0.9em; color: var(--gray); }
+
+  .vocab { display: inline-block; background: var(--dark); color: white; padding: 2px 10px; border-radius: 15px; font-size: 0.85em; margin: 3px 2px; }
+
+  /* Checklist */
+  .checklist { background: white; border-radius: 10px; padding: 25px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    gap: 12px;
+  }
+  .check-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 22px; height: 22px;
+    border: 2px solid var(--green);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .check-box.done { background: var(--green); color: white; }
+
+  .check-info { flex: 1; }
+  .check-title { font-weight: bold; }
+  .check-due { font-size: 0.85em; color: var(--gray); }
+  .check-due.overdue { color: var(--red); font-weight: bold; }
+  .check-due.upcoming { color: var(--orange); }
+  .check-status { font-size: 0.8em; padding: 2px 8px; border-radius: 10px; display: inline-block; margin-left: 5px; }
+  .status-past { background: #fce4e4; color: var(--red); }
+  .status-soon { background: #fff3e0; color: var(--orange); }
+  .status-later { background: #e8f5e9; color: var(--green); }
+
+  .thinker { background: #f9f3ff; border: 1px dashed #9b59b6; padding: 15px; border-radius: 8px; margin: 12px 0; }
+  .thinker strong { color: #8e44ad; }
+
+  .guest { background: #e8f4fd; padding: 12px; border-radius: 8px; margin: 10px 0; }
+  .guest strong { color: var(--blue); }
+
+  .film-project { background: #fff8e1; padding: 15px; border-radius: 8px; margin: 12px 0; border: 1px solid #f0d060; }
+
+  .reassurance { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); padding: 25px; border-radius: 12px; margin: 30px 0; text-align: center; font-size: 1.1em; }
+  .reassurance h3 { text-align: center; }
+
+  .links a { color: var(--blue); }
+  .links { margin: 10px 0; }
+
+  .section-divider { text-align: center; margin: 40px 0; color: var(--gray); font-size: 1.5em; letter-spacing: 10px; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.5em; }
+    .container { padding: 10px; }
+    .week-card { padding: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="subtitle">SOCS-202 | Emily Carr University</p>
+  <h1>Ecological Perspectives</h1>
+  <p>Complete Course Guide &amp; Catch-Up Companion</p>
+  <p style="margin-top:10px; font-size:0.9em; opacity:0.6;">Spring 2026 &bull; prepared March 19, 2026</p>
+</header>
+
+<div class="status-bar">
+  We are currently in <strong>Week 10</strong> of 14 (Thursday, March 19). You have time to catch up. &bull; <a href="SOCS202-Resources.html" style="color:white;text-decoration:underline;">View All Resources &rarr;</a>
+</div>
+
+<div class="container">
+
+<div class="reassurance">
+  <h3>Hey Max, take a breath.</h3>
+  <p>I've gone through every lecture slide, assignment brief, reading, and your uploaded work. You've actually done more than you might think &mdash; your Bio-Regional Reflections on Calgary's waste is complete, and your Secret Life of Protein Powder group project is well underway with your team (Vitoria, Keren, Carmen, Candela). Below is everything organized so you can see where you stand and what still needs doing.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>Part 1: Weekly Lecture Notes</h2>
+<!-- ============================================ -->
+
+<!-- WEEK 1 -->
+<div class="week-card">
+  <div class="week-num">Week 1 &mdash; Thursday, January 15</div>
+  <div class="week-title">Course Introduction &mdash; Acknowledging Complexity</div>
+
+  <p>The opening lecture established the foundations: a land acknowledgement recognizing the xʷməθkʷəy̓əm (Musqueam), Sḵwx̱wú7mesh (Squamish), and səl̓ilw̓ətaʔɬ (Tsleil-Waututh) peoples, and an introduction to the course's central question &mdash; how do our cultural lenses and "enframed views" create blindness to other ways of knowing?</p>
+
+  <div class="key-ideas">
+    <strong>Key ideas:</strong> The course challenges how we see the world through cultural frames that shape what we accept as "normal." Issues of consumerism, sustainability, and design are entangled with capitalism, modernity, colonialism, identity, politics, and our conceptions of nature. The goal is ecological literacy &mdash; building a wider frame of view.
+  </div>
+
+  <div class="quote">"It is not just ethicists or theologians who answer the question of 'how to live.' The landscape as well as the city are both highly structured and our existence is furnished with many different kinds of devices and technological systems. These are what instruct people in contemporary societies on 'how to live.'" <span class="author">&mdash; Gerard De Vries, Zeppelins (1999)</span></div>
+
+  <p><span class="vocab">Epistemology</span> <span class="vocab">Ontology</span> <span class="vocab">Normative</span> <span class="vocab">Ecological Literacy</span></p>
+</div>
+
+<!-- WEEK 2 -->
+<div class="week-card">
+  <div class="week-num">Week 2 &mdash; Thursday, January 22</div>
+  <div class="week-title">What is Design?! &mdash; Complexity and Context</div>
+
+  <p>This lecture reframed design as something far bigger than making things look good. Designers <strong>navigate</strong> competing conditions, constraints, ideas, values, and criteria particular to a situation, and then <strong>configure</strong> the relationships between them.</p>
+
+  <div class="key-ideas">
+    <strong>Key definition:</strong> "Devise courses of action aimed at changing existing situations into preferred ones." &mdash; Herbert Simon, <em>The Sciences of the Artificial</em> (1969). This definition is powerful because it doesn't discipline design outcomes, doesn't prescribe what type of action is needed, introduces "preferred" rather than just "change," and shifts focus from the <em>object</em> of design to the <em>situation</em> it changes.
+  </div>
+
+  <p>The lecture explored how design exists in <strong>context</strong> &mdash; whether we are aware of it or not. What are the consequences of not being aware of the contexts that shape design? Design is both an <strong>Action</strong> (a process, the act of designing) and a <strong>Thing</strong> (a result, artifact, plan &mdash; an object). When we talk about "objects" in this course, it means anything: architecture, print, literary works, ideas, interactions.</p>
+
+  <h4>The Plastic Water Bottle Case Study</h4>
+  <p>What problem did it solve? Convenience, commercializing PET plastic, selling a nation's water supply back to them. What problems did it create? 17 million barrels of oil annually, only 23% recycled, 500+ year decomposition into microplastics contaminating the food chain, corporate water-rights displacing communities. Nestle pays $15/day for water rights, sells it globally. This exercise shows how a simple "design solution" creates vast chains of unseen consequences.</p>
+
+  <h4>The Ergonomic Chair Thought Experiment</h4>
+  <p>If asked to design a chair comfortable for 10 hours &mdash; what situation are you condoning? What other courses of action might address the real situation (labour rights, workplace health)?</p>
+
+  <p>The class generated a word cloud of "What Shapes Design?" &mdash; everything from economics, politics, privilege, ego, demand, access, ignorance, empathy, culture, ideology, war, zeitgeist, ethics, and more. In other words: CONTEXT.</p>
+
+  <p><span class="vocab">Context</span> <span class="vocab">Navigate</span> <span class="vocab">Configure</span> <span class="vocab">Situation</span> <span class="vocab">Intervention</span> <span class="vocab">Judgment</span></p>
+</div>
+
+<!-- WEEK 3 -->
+<div class="week-card">
+  <div class="week-num">Week 3 &mdash; Thursday, January 29</div>
+  <div class="week-title">Ontological Propositions &mdash; The Ecologies of Technology (Part I)</div>
+
+  <p>This week introduced the idea that technology is never neutral. Francis Bacon wrote in 1620 that printing, gunpowder, and the compass changed the world more than any empire, sect, or star. But depending on your frame of reference, these technologies could represent progress <em>or</em> tools of colonial indoctrination, conquering, and exploitation.</p>
+
+  <div class="key-ideas">
+    <strong>Core argument:</strong> <em>Ontology</em> = we make things and things make us. Things are not neutral; they act on us, afford certain behaviours, enable actions and exclude others. They co-shape us. Technology transforms our social frameworks, forms of life, human wants and possibilities, and the experience of our bodies, nature, and the planet.
+  </div>
+
+  <div class="quote">"Sustainability is more than finding ecologically rational methods of production and consumption; it also involves collective judgment on those patterns... As a normative concept sustainability is a political/ethical issue first and, only derivatively, a technical/economic one second." <span class="author">&mdash; John Barry</span></div>
+
+  <div class="quote">"I consider questions about sustainability to be essentially normative and any answers they prompt essentially contested... For to suggest there is a need for technologies that are sustaining is to beg the question, sustaining of what?" <span class="author">&mdash; Aidan Davison</span></div>
+
+  <p>The recurring question: <strong>"What do we want to sustain?"</strong> Sustainability is a political/ethical issue first, a technical one second. We need to decide what kind of world we want before we can judge our solutions.</p>
+
+  <p>In-class activity: <strong>Bio-Regional Quiz</strong> &mdash; researching your local bio-region.</p>
+
+  <p><span class="vocab">Ontology</span> <span class="vocab">Normative</span> <span class="vocab">Sustainability</span> <span class="vocab">Epistemology</span> <span class="vocab">Bio-region</span></p>
+</div>
+
+<!-- WEEK 4 -->
+<div class="week-card">
+  <div class="week-num">Week 4 &mdash; Thursday, February 5</div>
+  <div class="week-title">Bringing Distant Horizons Closer &mdash; Crafting Decolonial Futures</div>
+
+  <div class="guest"><strong>Guest Speaker: Dr. Manuhuia Barcham</strong> &mdash; Works at the intersection of Interaction Design, Service Design, and Strategic Design. Grew up on a Marae (traditional Maori village) in New Zealand. PhD in Political Philosophy. Explores how we come together across cultural boundaries to design and recraft value sustainably.</div>
+
+  <p>This week connected the themes of technology and ontology to decolonial perspectives &mdash; how design can be reoriented through Indigenous ways of knowing and non-Western worldviews.</p>
+</div>
+
+<!-- WEEK 5 -->
+<div class="week-card">
+  <div class="week-num">Week 5 &mdash; Thursday, February 12</div>
+  <div class="week-title">Shadow Constitutions &mdash; The Ecologies of Technology (Part II)</div>
+
+  <p>Building directly on Week 3, this lecture introduced Langdon Winner's concept of <strong>Shadow Constitutions</strong>: technologies structure our lives like laws do, but unlike laws, they aren't publicly debated or voted on.</p>
+
+  <div class="quote">"Consciously or unconsciously, deliberately or inadvertently, societies choose structures for technologies that influence how people are going to work, communicate, travel, consume and so forth for a very long time." <span class="author">&mdash; Langdon Winner, The Whale and the Reactor (1986)</span></div>
+
+  <div class="key-ideas">
+    <strong>Key frameworks introduced:</strong><br>
+    <strong>Causal vs. Meaningful impacts:</strong> We exist in the world both causally (physical reality, natural laws, physical impact) and meaningfully (social worlds, cultural expectations, societal norms and values).<br><br>
+    <strong>Technology directs its force disproportionately away from the user</strong> (Andrew Feenberg) &mdash; the hunter feels a slight pressure on their shoulder as a bullet strikes the rabbit; a driver hears a faint rustling of leaves as they hurtle a ton of steel down the highway. The convenience of use obscures the wider impact.<br><br>
+    <strong>Reciprocity:</strong> "Only God can act on his objects without reciprocity" (Feenberg). As humans in a finite world, everything is reciprocal &mdash; nothing goes into the world without effect on us.
+  </div>
+
+  <h4>Secondary Impacts &mdash; Causal and Meaningful</h4>
+  <p>Beyond a technology's immediate benefit, what are the secondary impacts? The lecture used the Alberta oil sands as an example of secondary causal impacts (the largest industrial project in history, spanning two provinces, clearing forest, removing "overburden" which is industry speak for topsoil/subsoil/clay).</p>
+
+  <h4>Barry Commoner's 4 Laws of Ecology (1971)</h4>
+  <div class="key-ideas">
+    <strong>1. Everything Is Connected To Everything Else</strong> &mdash; one ecosphere, what affects one affects all.<br>
+    <strong>2. Everything Must Go Somewhere</strong> &mdash; no "waste" in nature, no "away" to throw things.<br>
+    <strong>3. Nature Knows Best</strong> &mdash; technological improvements on nature are likely detrimental.<br>
+    <strong>4. There Is No Such Thing As A Free Lunch</strong> &mdash; every technological gain has a cost, all debts are eventually paid.
+  </div>
+
+  <div class="quote">"It matters what matters we use to think other matters with; it matters what stories we tell to tell other stories with... It matters what worlds make stories, what stories make worlds." <span class="author">&mdash; Donna J. Haraway, Staying with the Trouble</span></div>
+
+  <div class="quote">"Does it matter whether we write with pencils or on an iPad? Whether we engage in activities collectively in the neighbourhood or in the solitude of our individual rooms in nuclear homes? In what ways do these diverse practices construct different selves and societies? Does it matter?" <span class="author">&mdash; Arturo Escobar, Designs for the Pluriverse</span></div>
+
+  <p><span class="vocab">Shadow Constitutions</span> <span class="vocab">Reciprocity</span> <span class="vocab">Causal Impact</span> <span class="vocab">Meaningful Impact</span> <span class="vocab">Secondary Impacts</span></p>
+</div>
+
+<!-- WEEK 6 -->
+<div class="week-card break">
+  <div class="week-num">Week 6 &mdash; Thursday, February 19 (Reading Week)</div>
+  <div class="week-title">Reading Week</div>
+  <p>Catch-up time. Hand in all assignments from Weeks 1-5. Begin watching the two required documentaries: <strong>The Biggest Little Farm</strong> and <strong>Outgrow the System</strong> (both to be watched before March 5).</p>
+</div>
+
+<!-- WEEK 7 -->
+<div class="week-card">
+  <div class="week-num">Week 7 &mdash; Thursday, February 26</div>
+  <div class="week-title">Sustainability(s) &mdash; A Different Kind of Material Culture?</div>
+
+  <p>This is the lecture from your Week 5 slides file. It reframed sustainability not as an environmental issue but as a <strong>social issue</strong>.</p>
+
+  <div class="key-ideas">
+    <strong>Core argument:</strong> Climate change is the end result of all human activity &mdash; it is the <em>wrong place to start looking.</em> Unsustainability is manifest through the mundane decisions people make every day: getting dressed, eating, getting around, communicating, making life a little easier. These innocuous decisions tie us to a great chain of relations, seen and unseen. <strong>These are exactly the place and scale at which design intervenes in the world.</strong>
+  </div>
+
+  <p>Climate change is the <em>aggregate effect</em> of billions of people passively attending to their own convenience, comfort, and/or survival. "Passive" is an important word &mdash; existing or experiencing without active or concerted effort. The ability to be passive, to not care, is a <strong>kind of luxury</strong> born of comfort and privilege.</p>
+
+  <p>The distinction between "a good life" vs. "the good life" &mdash; can we invite people to be active participants in the choices that shape our world instead of passive consumers?</p>
+
+  <p><strong>"Climate Change is not an environmental issue. Climate Change is a social issue."</strong> When we say social, we also mean societal. Linking individual and societal is one of the big transitions we need in sustainability.</p>
+
+  <p>Design intervenes in spaces of personal agency, spaces of choice, at the level of behaviour and action, and in spaces of thinking. These are powerful places for systemic shifts to begin.</p>
+
+  <p>The lecture covered the "Design Sleepwalking" research, mapping roles and strategies for sustainability and systemic change. In-class activity: <strong>S.L.O. (Secret Life of...) Object Pitches</strong>.</p>
+
+  <p><span class="vocab">Design Sleepwalking</span> <span class="vocab">Material Culture</span> <span class="vocab">Passive vs Active</span> <span class="vocab">Aggregate Effect</span> <span class="vocab">Transition Design</span></p>
+</div>
+
+<!-- WEEK 8 -->
+<div class="week-card">
+  <div class="week-num">Week 8 &mdash; Thursday, March 5</div>
+  <div class="week-title">Rebecca Burgess of Fibershed + Forensics Workshop</div>
+
+  <div class="guest"><strong>Guest Speaker: Rebecca Burgess</strong> &mdash; Founder of Fibershed, which develops place-based regional fibre and natural dye systems that regenerate soil carbon while providing meaningful livelihoods. Built a circular regenerative fiber systems model at community scale in Northern California, replicated worldwide.</div>
+
+  <p>Also discussed <strong>Outgrow the System</strong> documentary (alternative economics, transitioning to sustainable economic systems). The Forensics Workshop relates to the Secret Life of... film project.</p>
+
+  <div class="film-project">
+    <strong>Your group project &mdash; The Secret Life of Protein Powder:</strong> Your team (Vitoria, Keren, Carmen, Candela, and you) has a Master Research Document of 47 pages across 5 sections. Your claim: the supplement industry manufactured mass protein anxiety in a population that largely doesn't need supplementation, privatizing the concept of health. The story follows protein powder from Plasmon in a German hospital (1899) to a gas station shelf today. The Story &amp; Concept Worksheet shows strong contributions from you and Keren especially.
+  </div>
+</div>
+
+<!-- WEEK 9 -->
+<div class="week-card">
+  <div class="week-num">Week 9 &mdash; Thursday, March 12</div>
+  <div class="week-title">Dr. Rita Wong &mdash; Water Protector, Activism, Decolonization</div>
+  <p>Dr. Rita Wong is an award-winning poet whose work investigates relationships between poetics, social justice, ecology, and decolonization. She is a renowned water protector whose activism supports Indigenous communities' efforts for water justice. Design Activism and Dissent discussion.</p>
+</div>
+
+<!-- WEEK 10 - TODAY -->
+<div class="week-card current">
+  <div class="week-num">Week 10 &mdash; Thursday, March 19 &bull; TODAY</div>
+  <div class="week-title">Future Worldings &mdash; Dr. Mimi Gellman</div>
+  <p>Looking Back into the Future / Indigenous Modes of Engagement. Mimi Gellman is an Anishinaabe/M&eacute;tis visual artist whose work explores phenomenology and technologies of intuition, animacy and agency of objects, and decolonial aesthetic perspectives. Storyboarding activity for your Secret Life of... film project.</p>
+</div>
+
+<div class="week-card future">
+  <div class="week-num">Week 11 &mdash; Thursday, March 26</div>
+  <div class="week-title">Chessa Adsit-Morris &mdash; Restorying Environmental Education</div>
+  <p>Curriculum theorist from UC Santa Cruz writing on posthumanism(s), ecological thought, and speculative fiction. Refining narratives activity.</p>
+</div>
+
+<div class="week-card future">
+  <div class="week-num">Week 12 &mdash; Thursday, April 2</div>
+  <div class="week-title">Closing Perspectives &mdash; Ecological Futures</div>
+</div>
+
+<div class="week-card future">
+  <div class="week-num">Week 13 &mdash; Thursday, April 9</div>
+  <div class="week-title">Secret Life of... Full Class Workshopping Session</div>
+</div>
+
+<div class="week-card future">
+  <div class="week-num">Week 14 &mdash; Thursday, April 16</div>
+  <div class="week-title">Secret Life of... Film Festival! @ 12:30-4pm Theatre</div>
+</div>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<h2>Part 2: Key Readings &amp; Viewings</h2>
+<!-- ============================================ -->
+
+<h3>Required Readings</h3>
+<p><strong>"Bodies Tumbled into Bodies"</strong> by Anna Tsing (PDF on Moodle) &mdash; explores entanglement, multispecies encounters, and how bodies (human and non-human) are always already mixed up with each other. Key for understanding ecological interconnection.</p>
+
+<p><strong>"Why We Need New Stories on Climate"</strong> by Rebecca Solnit (PDF on Moodle) &mdash; argues that the climate crisis is also a crisis of narrative. We need new stories that move beyond doom/despair and open up possibility for collective action.</p>
+
+<p><strong>"Maple Nation: A Citizenship Guide"</strong> by Robin Wall Kimmerer (from <em>Braiding Sweetgrass</em>) &mdash; Kimmerer reimagines citizenship through the lens of maple trees. The maples are the most generous citizens of the community &mdash; providing shade, firewood, syrup, habitat, carbon storage &mdash; all without being asked. She proposes a "Maple Nation Bill of Responsibilities" instead of a Bill of Rights, arguing for reciprocity with the natural world. Citizenship means <em>giving back</em>, not just paying taxes. Carbon is the currency of Maple Nation: "traded, bartered, among community members from atmosphere to tree to beetle to woodpecker to fungus to log to firewood to atmosphere and back to tree. No waste, shared wealth, balance, and reciprocity."</p>
+
+<p><strong><a href="https://humansandnature.org/home-story/">"Home"</a></strong> by Dr. Zoe Todd &mdash; a short, accessible story about what it means to be home on the land. Grounding for the Zoe Todd talk.</p>
+
+<p><strong>"Goodbye Snauq"</strong> by Lee Maracle &mdash; video on how we work with story (available on Moodle).</p>
+
+<p><strong>"What is Care at Planetary Dimensions?"</strong> by Patricia Reed (PDF on Moodle) &mdash; explores care beyond the individual scale.</p>
+
+<p><strong><a href="https://anatomyof.ai">Anatomy of an AI System</a></strong> &mdash; Kate Crawford and Vladan Joler's investigation mapping all the human labour, data, and planetary resources required to build and operate an Amazon Echo. A key text for understanding the hidden ecologies of technology.</p>
+
+<h3>Required Documentaries &amp; Videos</h3>
+<p><strong><a href="https://vimeo.com/304964553">The Overview Effect</a></strong> (19 min) &mdash; Watch only, no hand-in.</p>
+<p><strong><a href="https://media3-criterionpic-com.eu1.proxy.openathens.net/htbin/wwform/006?T=110082E">The Biggest Little Farm</a></strong> (ECU Criterion Collection) &mdash; Biodynamic farm in California showing mutualistic ecologies of life. Connects to Fibreshed talk.</p>
+<p><strong><a href="https://www.youtube.com/watch?v=9GorqroigqM">Outgrow the System</a></strong> (58 min) &mdash; Transitioning to a sustainable economic system. Alternative economics.</p>
+<p><strong><a href="https://www.youtube.com/watch?v=6v8e7dUwq_Q">The Corporation</a></strong> (optional but highly recommended) &mdash; One of the most important documentaries of the last 2 decades.</p>
+<p><strong><a href="https://storyofstuff.org">The Story of Stuff</a></strong> (video) &mdash; Short animation on the lifecycle of material goods.</p>
+
+<h3>Take-Home Lectures (on Moodle &mdash; Kaltura)</h3>
+<p><strong>Part I: Design Sleepwalking</strong> &mdash; Strategies and design roles for sustainability and social change (start at 15:00 mark).</p>
+<p><strong>Part II: Examples of Design Works</strong> &mdash; Wide range of examples across design disciplines for sustainability, social change, and transition design.</p>
+
+<p style="margin-top:15px;"><strong><a href="SOCS202-Resources.html">&rarr; See the full Resources page for all additional readings, viewings, and links</a></strong></p>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<h2>Part 3: Key Vocabulary &amp; Concepts</h2>
+<!-- ============================================ -->
+
+<div class="week-card">
+  <p><strong>Epistemology</strong> &mdash; How we know what we know; the study of knowledge and justified belief.</p>
+  <p><strong>Ontology</strong> &mdash; The nature of relation and being. "We make things and things make us." Things are not neutral; they co-shape us.</p>
+  <p><strong>Normative</strong> &mdash; Ideas about what we "ought" to do. Rooted in values and ways of seeing the world. Whose values? Whose right and wrong?</p>
+  <p><strong>Shadow Constitutions</strong> (Langdon Winner) &mdash; Technologies act as unwritten laws, structuring society without public debate.</p>
+  <p><strong>Design Sleepwalking</strong> (George Orwell / Langdon Winner) &mdash; How we unconsciously reconstitute the conditions of human existence through our relationship with technology.</p>
+  <p><strong>Reciprocity</strong> &mdash; In a finite world, everything is reciprocal. Nothing goes into the world without effect. Central to Indigenous worldviews (Kimmerer, Simpson).</p>
+  <p><strong>Defuturing</strong> &mdash; Design decisions that close down future possibilities and ways of being.</p>
+  <p><strong>Pluriverse</strong> (Arturo Escobar) &mdash; "A world where many worlds fit." Honouring multiple ways of being and knowing, rather than one dominant worldview.</p>
+  <p><strong>Transition Design</strong> &mdash; Design aimed at societal transitions toward more sustainable futures.</p>
+  <p><strong>Commoning / Recommoning</strong> &mdash; Reclaiming shared resources essential to community survival.</p>
+  <p><strong>Bio-region</strong> &mdash; A geographic area defined by ecological systems rather than political boundaries.</p>
+  <p><strong>Aggregate Effect</strong> &mdash; How billions of small mundane decisions collectively produce massive systemic outcomes like climate change.</p>
+  <p><strong>Human Exceptionalism</strong> &mdash; The belief that humans are fundamentally separate from and superior to nature.</p>
+  <p><strong>Animacy / Agency of Objects</strong> &mdash; The idea (central to many Indigenous worldviews) that objects and non-human beings have life, spirit, and capacity to act.</p>
+</div>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<h2>Part 4: Assignment Checklist</h2>
+<p style="text-align:center; color: var(--gray); margin-bottom:20px;">Check off what you've done. Items with red dates are past due.</p>
+<!-- ============================================ -->
+
+<div class="checklist">
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Reflection: "Bodies Tumbled into Bodies" by Anna Tsing</div>
+      <div class="check-due">Due: Jan 21 &mdash; <strong style="color:var(--green);">SUBMITTED</strong></div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Watch: <a href="https://vimeo.com/304964553">The Overview Effect</a> (19 min) &mdash; watch only</div>
+      <div class="check-due">Due: Jan 21 &mdash; <strong style="color:var(--green);">WATCHED</strong></div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">!</div>
+    <div class="check-info">
+      <div class="check-title">Reflection: "Why We Need New Stories on Climate" by Rebecca Solnit</div>
+      <div class="check-due overdue">Due: Jan 28 <span class="check-status status-past">NOT YET SUBMITTED</span></div>
+      <div>Short reflection &mdash; read the Solnit essay and write a response. Ask your TA about late submission.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Bio-Regional Quiz Part I (+ Reflections)</div>
+      <div class="check-due">Due: Feb 4 &mdash; <strong style="color:var(--green);">LOOKS COMPLETE</strong></div>
+      <div>Your "Bio-Regional Reflections: The Journey of Calgary's Waste" presentation is uploaded.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Visual Field Notes (Part II of Bio-Regional Quiz)</div>
+      <div class="check-due">Due: Feb 22 &mdash; <strong style="color:var(--green);">SUBMITTED</strong></div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Secret Life of... Object Pitches (group)</div>
+      <div class="check-due">Due: Feb 25 &mdash; <strong style="color:var(--green);">LOOKS COMPLETE</strong></div>
+      <div>Your group chose Protein Powder. Master Research Document and Story Worksheet are well underway.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">!</div>
+    <div class="check-info">
+      <div class="check-title">Watch: The Biggest Little Farm + Outgrow the System</div>
+      <div class="check-due overdue">Due: before March 5 <span class="check-status status-past">NOT YET WATCHED</span></div>
+      <div>No formal hand-in, but important for class discussions. Biggest Little Farm is on ECU Criterion Collection. Outgrow the System is a 58-min doc on transitioning economies. Watch these soon &mdash; they connect to the Fibershed talk and upcoming themes.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box done">&#10003;</div>
+    <div class="check-info">
+      <div class="check-title">Forensics Workshop Sheets</div>
+      <div class="check-due">Due: March 19 &mdash; <strong style="color:var(--green);">DONE</strong></div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">!</div>
+    <div class="check-info">
+      <div class="check-title">Readings: Goodbye Snauq + Maple Nation + Skywoman</div>
+      <div class="check-due overdue">Due: March 18 <span class="check-status status-past">NOT YET DONE</span></div>
+      <div>Read "Maple Nation: A Citizenship Guide" by Kimmerer (you have this file!), watch Lee Maracle's "Goodbye Snauq" video on Moodle, and the Skywoman reading. Do these soon &mdash; they're short and rich.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">?</div>
+    <div class="check-info">
+      <div class="check-title">A Different Kind of Material Culture &mdash; Take Home Lecture Response</div>
+      <div class="check-due upcoming">Due: March 25 <span class="check-status status-soon">NEXT WEEK</span></div>
+      <div>Watch both Take Home Lecture videos on Moodle (Part I starts at 15:00 mark, Part II is examples). Write a response.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">?</div>
+    <div class="check-info">
+      <div class="check-title">Design Activism &amp; Dissent Forum</div>
+      <div class="check-due">Due: April 17 <span class="check-status status-later">LATER</span></div>
+      <div>Forum post: share 3 images of design activism (at least 1 local). Include descriptions/links/credits. Part of participation grade. Low-stakes sharing assignment.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">?</div>
+    <div class="check-info">
+      <div class="check-title">Secret Life of... Film (group &mdash; ongoing)</div>
+      <div class="check-due">Final: Week 14 Film Festival <span class="check-status status-later">APRIL 16</span></div>
+      <div>Group film project. You're making a short documentary-style film about the secret life of protein powder. Workshopping in Week 13, screening in Week 14.</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="check-box">?</div>
+    <div class="check-info">
+      <div class="check-title">Calculate Your Ecological Footprint</div>
+      <div class="check-due">Was assigned early &mdash; no formal hand-in, but good to do</div>
+      <div>Use footprintcalculator.org</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<h2>Part 5: Your Secret Life of... Film Project</h2>
+<!-- ============================================ -->
+
+<div class="week-card">
+  <h3>The Secret Life of Protein Powder</h3>
+  <p><strong>Team:</strong> Vitoria, Keren, Carmen, Candela, Max</p>
+  <p><strong>Your claim:</strong> Protein powder is not inherently bad &mdash; it's a genuine nutritional tool for specific populations. The critique is the <em>system</em> built around it: an unregulated industry that manufactured mass protein anxiety in a population that largely doesn't need supplementation. The commodity has become an identity project &mdash; what you supplement with signals body ideals, tribe, and class position.</p>
+
+  <h4>Three Time Periods:</h4>
+  <p><strong>Period 1 (Late 1800s-Early 1900s):</strong> Plasmon &mdash; a dried milk product for malnourished hospital patients. Invisible to ordinary people, shaped by medical need.</p>
+  <p><strong>Period 2 (1950s-1990s):</strong> The supplement industry co-opts bodybuilding's steroid-fuelled results, attributes them to powder, and builds an empire on fiction &mdash; creating the gym and the post-workout shake as new social spaces and rituals.</p>
+  <p><strong>Period 3 (2000s-Present):</strong> Protein anxiety, manufactured by decades of marketing, sells a solution to a problem most people don't have &mdash; while the plastic tub, Instagram selfie, and shaker cup complete the transformation of food into a data point.</p>
+
+  <h4>Key Research Points:</h4>
+  <p>The regulatory void (classified as neither food nor medicine), contamination issues (half of tested products contain lead/cadmium/arsenic), the Weider Research Clinic fiction, the shaker cup as identity object, most early "gains" were from steroids not supplements, and how the industry creates the need it claims to fill.</p>
+
+  <h4>Remaining Project Steps:</h4>
+  <p>Video Direction &amp; Team Questions (Section 05 of your master doc &mdash; 8 pages with six video concepts + questions for each team member). Storyboarding (Week 10 &mdash; today!), refining narratives (Week 11 &mdash; March 26), workshopping (Week 13 &mdash; April 9), Film Festival (Week 14 &mdash; April 16).</p>
+</div>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<h2>Part 6: Useful Links</h2>
+<!-- ============================================ -->
+
+<div class="week-card links">
+  <p><a href="https://www.youtube.com/watch?v=6v8e7dUwq_Q"><strong>The Corporation</strong></a> &mdash; full documentary on YouTube</p>
+  <p><a href="https://vimeo.com/304964553"><strong>The Overview Effect</strong></a> &mdash; 19 min on Vimeo</p>
+  <p><a href="https://www.youtube.com/watch?v=9GorqroigqM"><strong>Outgrow the System</strong></a> &mdash; 58 min on YouTube</p>
+  <p><a href="https://www.footprintcalculator.org/home/en"><strong>Ecological Footprint Calculator</strong></a></p>
+  <p><a href="https://storyofstuff.org"><strong>The Story of Stuff</strong></a></p>
+  <p><a href="https://anatomyof.ai"><strong>Anatomy of an AI</strong></a> &mdash; infographic by Crawford &amp; Joler</p>
+  <p><a href="https://kateraworth.com"><strong>Donut Economics</strong></a> &mdash; Kate Raworth</p>
+  <p><a href="https://thenarwhal.ca"><strong>The Narwhal</strong></a> &mdash; non-profit environmental journalism</p>
+  <p><a href="https://thetyee.ca"><strong>The Tyee</strong></a> &mdash; local independent news</p>
+  <p><a href="https://fibershed.org"><strong>Fibershed</strong></a> &mdash; Rebecca Burgess's organization</p>
+  <p><a href="https://humansandnature.org/home-story/"><strong>Dr. Zoe Todd &mdash; "Home"</strong></a></p>
+  <p><a href="https://www.manuhuiabarcham.com/bio"><strong>Dr. Manuhuia Barcham</strong></a></p>
+  <p><a href="https://www.onafuwa.com/"><strong>Dimeji Onafuwa</strong></a></p>
+  <p><a href="https://www.leannesimpson.ca/about/"><strong>Leanne Betasamosake Simpson</strong></a></p>
+</div>
+
+<!-- ============================================ -->
+<div class="section-divider">&bull; &bull; &bull;</div>
+<!-- ============================================ -->
+
+<div class="reassurance">
+  <h3>The Big Picture &mdash; Your Actual Status</h3>
+  <p style="text-align:left;"><strong style="color:var(--green);">Done (6 items):</strong> Bodies Tumbled reflection, Bio-Regional Quiz + Reflections, Visual Field Notes, Object Pitches, Forensics Workshop Sheets, and your group project is on track.</p>
+  <p style="text-align:left;"><strong style="color:var(--orange);">To do soon (3 items):</strong></p>
+  <p style="text-align:left;">1. <strong>Rebecca Solnit reflection</strong> &mdash; the one past-due written assignment. Email your TA to ask about late policy; it's a short reflection piece.<br>
+  2. <strong>Readings (Maple Nation + Goodbye Snauq + Skywoman)</strong> &mdash; just past due, do these this week. You already have the Maple Nation PDF.<br>
+  3. <strong>Watch the two documentaries</strong> &mdash; no formal hand-in but important for context. Could be a weekend watch.</p>
+  <p style="text-align:left;"><strong style="color:var(--blue);">Coming up:</strong></p>
+  <p style="text-align:left;">4. <strong>Take Home Lecture response</strong> (due March 25) &mdash; watch the two Moodle videos and write a response.<br>
+  5. <strong>Design Activism Forum</strong> (due April 17) &mdash; low-stakes, find 3 images of design activism.<br>
+  6. <strong>Secret Life of... Film</strong> (April 14) &mdash; you're on track with your group.</p>
+  <p style="margin-top:15px;"><strong>You are not as behind as you think.</strong> You've submitted the majority of assignments. You have one missing reflection and a few readings/viewings to catch up on. The rest is ahead of you with plenty of time.</p>
+</div>
+
+</div><!-- end container -->
+</body>
+</html>
